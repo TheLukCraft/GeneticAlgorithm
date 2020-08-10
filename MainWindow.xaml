@@ -1,0 +1,76 @@
+﻿<Window x:Class="Algorytm_Evolucyjny.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Algorytm_Evolucyjny"
+        mc:Ignorable="d"
+        Title="Algorytm Genetyczny" Height="470" Width="745">
+    <Grid Background="#FEFEFE">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="292"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Fill="#FF00AEFF" HorizontalAlignment="Left" Margin="0,10,0,10" Width="2" Grid.Column="1"/>
+
+
+
+        <Label x:Name="label" Content="Tworzenie Populacji" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="122" Height="26"/>
+        <TextBox x:Name="populationSize" HorizontalAlignment="Left" Height="23" Margin="69,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="2"/>
+        <Button x:Name="createBtn" Content="Stwórz" HorizontalAlignment="Left" Margin="194,37,0,0" VerticalAlignment="Top" Width="78" Height="23" Click="CreateBtn_Click"/>
+
+        <Rectangle Fill="#FF00AEFF" HorizontalAlignment="Left" Height="2" Margin="10,72,0,0" VerticalAlignment="Top" Width="262"/>
+
+
+
+        <Label x:Name="label_Copy" Content="Mutacja Populacji" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="112" Height="26"/>
+        <TextBox x:Name="subjectChance" HorizontalAlignment="Left" Height="23" Margin="69,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" Text="Szansa mutacji osobika"/>
+        <TextBox x:Name="genChance" HorizontalAlignment="Left" Height="23" Margin="69,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Szansa mutacji genu"/>
+
+        <Button x:Name="button_Copy" Content="Mutuj" HorizontalAlignment="Left" Margin="194,127,0,0" VerticalAlignment="Top" Width="78" Height="23" Click="Button_Copy_Click"/>
+        
+        <Rectangle Fill="#FF00AEFF" HorizontalAlignment="Left" Height="2" Margin="10,157,0,0" VerticalAlignment="Top" Width="262"/>
+
+
+        <Label x:Name="label_Copy1" Content="Krzyżowanie Populacji" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" Width="136" Height="26"/>
+        <TextBox x:Name="crossChance" HorizontalAlignment="Left" Height="23" Margin="69,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Szansa krzyżowania"/>
+        <Button x:Name="cross" Content="Krzyżuj" HorizontalAlignment="Left" Margin="194,184,0,0" VerticalAlignment="Top" Width="78" Height="23" Click="Cross_Click"/>
+
+        <Rectangle Fill="#FF00AEFF" HorizontalAlignment="Left" Height="2" Margin="10,221,0,0" VerticalAlignment="Top" Width="262"/>
+        <Label x:Name="label_Copy2" Content="Ewolucja Populacji" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Width="122" Height="26"/>
+        <TextBox x:Name="quantity" HorizontalAlignment="Left" Height="23" Margin="69,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Ilość populacj"/>
+        <Button x:Name="evolute" Content="Ewoluuj" HorizontalAlignment="Left" Margin="194,261,0,0" VerticalAlignment="Top" Width="78" Height="23" Click="Evolute_Click"/>
+   
+        
+        <Rectangle Fill="#FF00AEFF" HorizontalAlignment="Left" Height="2" Margin="10,299,0,0" VerticalAlignment="Top" Width="262"/>
+        <Label x:Name="label_Copy3" Content="Ustaw Warunki" HorizontalAlignment="Left" Margin="10,312,0,0" VerticalAlignment="Top" Width="122" Height="26"/>
+        <TextBox x:Name="a" HorizontalAlignment="Left" Height="23" Margin="25,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="26"/>
+        <TextBox x:Name="b" HorizontalAlignment="Left" Height="23" Margin="94,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="26" RenderTransformOrigin="1.538,1.87"/>
+        <TextBox x:Name="c" HorizontalAlignment="Left" Height="23" Margin="153,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="26"/>
+        <Button x:Name="set" Content="Ustaw" HorizontalAlignment="Left" Margin="194,339,0,0" VerticalAlignment="Top" Width="78" Height="23" Click="Set_Click"/>
+        <Label x:Name="label1" Content="x^2 +" HorizontalAlignment="Left" Margin="51,338,0,0" VerticalAlignment="Top" Width="43"/>
+        <Label x:Name="label1_Copy" Content="x +" HorizontalAlignment="Left" Margin="120,338,0,0" VerticalAlignment="Top" Width="43"/>
+        
+        
+        <Label x:Name="topLbl" Content="" Grid.Column="1" Margin="10,10,0,0"/>
+
+        <ListView x:Name="listView" Grid.Column="1" Margin="10,40,10,10">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Header="id" Width="30" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="DNA" Width="100" DisplayMemberBinding="{Binding Dna}" />
+                    <GridViewColumn Header="Value" Width="50" DisplayMemberBinding="{Binding Val}" />
+                    <GridViewColumn Header="f(x)" Width="70" DisplayMemberBinding="{Binding YVal}" />
+                    <GridViewColumn Header="Udział" Width="150" DisplayMemberBinding="{Binding Part}" />
+                </GridView>
+
+            </ListView.View>
+        </ListView>
+        <Button x:Name="roulette" Content="Ruletka" HorizontalAlignment="Left" Margin="194,399,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.027,0.95" Click="Roulette_Click"/>
+        <Rectangle Fill="#FF00AEFF" HorizontalAlignment="Left" Height="2" Margin="10,382,0,0" VerticalAlignment="Top" Width="262"/>
+        <Button x:Name="saveBtn" Content="Zapisz" HorizontalAlignment="Left" Margin="104,399,0,0" VerticalAlignment="Top" Width="75" Click="SaveBtn_Click"/>
+        <Button x:Name="readBtn" Content="Wczytaj" HorizontalAlignment="Left" Margin="10,399,0,0" VerticalAlignment="Top" Width="75" Click="ReadBtn_Click"/>
+        
+    </Grid>
+</Window>
